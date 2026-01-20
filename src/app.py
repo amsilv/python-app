@@ -9,7 +9,7 @@ def details():
     return jsonify({
         'time': datetime.now().strftime("%I:%M:%S %p on %B %d, %Y"),
         'hostname': socket.gethostname(),
-        'message': 'you are doing great, bora, again3!!!:)'
+        'message': 'you are doing great, bora, again4!!!:)'
     })
 
 @app.route('/api/v1/healthz', methods=['GET'])
