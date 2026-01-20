@@ -31,10 +31,17 @@ jobs:
           tags: amsilv/python-app:${{ env.COMMIT_ID }} 
   cd:
     needs: ci
-    runs-on: Argocd app sync
+    runs-on: self-hosted
     steps:
 
-      - name: shorten commit id
+      - name: install argocd
+        shell: bash
+        run:
+          curl -ksSL -o argocd-linux-amd64 https://argocd-server.argocd/download/argocd-linux-amd64
+          chmod +x argocd
+          mv ./argocd /usr/local/bin/argocd
+
+      - name: Argocd app sync
         shell: bash
         run:
           argocd login argocd.server.argocd \
